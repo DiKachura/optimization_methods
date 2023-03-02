@@ -2,6 +2,7 @@ def f(x):
     return x**2+6*x+13
 
 def main():
+    print('Метод Дихотомии')
     a = -6
     b = 4
     k = 0
