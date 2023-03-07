@@ -7,7 +7,7 @@ def f(x):
 # Метод золотого сечения
 #def Golden_ratio(f, a, b, eps):
 def main():
-    print('Метод Дихотомии')
+    print('Метод золотого сечения')
     a = -6
     b = 4
     eps = 0.5
