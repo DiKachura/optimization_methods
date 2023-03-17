@@ -2,21 +2,15 @@
 def f(x):
     return x ** 2 + 6 * x + 13
 
-fib = [1, 1]
-
-# Вычислить числа Фибоначчи от 1 до n
-def calcfib(n):
-    global fib
-    if len(fib) - 1 < n:
-        fib += [calcfib(n - 2) + calcfib(n - 1)]
-    return fib[n]
-
-
-def fibonacci(f, a, b, eps, n):
-    print('Метод золотого сечения')
-    calcfib(n)
+def fibonacci(f, a, b, eps):
+    print('Метод Фибоначчи:')
+    l = 2*eps
+    fn, fn1, n = 1, 1, 1
+    R = abs(b-a)/l
+    while fn < R:
+        fn, fn1, n = fn + fn1, fn, n + 1
     k = 0
-    z = a + fib[n - 1] / fib[n] * (b - a)
+    z = a + fn1 / fn * (b - a)
     y = a + b - z
     fy = f(y)
     fz = f(z)
@@ -66,9 +60,6 @@ def main():
     a = -6
     b = 4
     eps = 0.5
-    n = 6
-    print('Метод Фибоначчи:')
-    fibonacci(f, a, b, eps, n)
-
+    fibonacci(f, a, b, eps)
 if __name__ == '__main__':
     main()
