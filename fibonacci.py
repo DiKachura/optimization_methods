@@ -5,6 +5,7 @@ def f(x):
 def fibonacci(f, a, b, eps):
     print('Метод Фибоначчи:')
     l = 2*eps
+    delta = 0.2
     fn, fn1, n = 1, 1, 1
     R = abs(b-a)/l
     while fn < R:
@@ -15,7 +16,7 @@ def fibonacci(f, a, b, eps):
     fy = f(y)
     fz = f(z)
     print(f'Промежуток: [{a},{b}]\n')
-    while k < n - 3:
+    while k <= n - 3:
         print('Сравниваем f(yk) с f(zk)')
         print(f'f(y{k}) = {fy}, f(z{k}) = {fz} =>')
         if fy <= fz:
@@ -24,26 +25,22 @@ def fibonacci(f, a, b, eps):
             b = z
             z = y
             fz = fy
-            ind = True
+            y = a + b - z
+            fy = f(y)
         else:
             print('f(y{k}) > f(z{k})')
             print(f'Таким образом, a{k + 1} = y{k} = {y}; b{k + 1} = b{k} = {b}; y{k + 1} = z{k} = {z}; z{k + 1} = a{k + 1} + b{k + 1} - z{k} = {a + b - y}')
             a = y
             y = z
             fy = fz
-            ind = False
-        if ind == True:
-            y = a + b - z
-            fy = f(y)
-        else:
             z = a + b - y
             fz = f(z)
+
         print(f'Промежуток:[{a},{b}]\n')
         k += 1
     print(f'k = N - 3 = {n - 3}')
-    y = (a+b)/2
-    z = y + eps
-    fy = f(y)
+    print("Y, Z: ", y, z)
+    z = y + delta
     fz = f(z)
     if fy <= fz:
         print(f'f(y{n-1}) <= f(z{n-1})')
