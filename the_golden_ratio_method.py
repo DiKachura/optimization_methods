@@ -1,9 +1,7 @@
 from math import sqrt
 
-
 def f(x):
     return x**2+6*x+13
-
 
 def main():
     print('Метод золотого сечения')
@@ -18,29 +16,30 @@ def main():
     fz = f(z)
     print(f'Промежуток: [{a},{b}]\n')
     l = 2 * eps
-    ind = True
     while(abs(b-a)>l):
         print('Сравниваем f(yk) с f(zk)')
-        print(f'f(y{k}) = {f(y)}, f(z{k}) = {f(z)} =>')
+        print(f'f(y{k}) = {fy}, f(z{k}) = {fz} =>')
         if fy <= fz:
-            y0 = y
+
             print(f'f(y{k}) <= f(z{k})')
-            print(f'Таким образом, a{k + 1} = a{k} = {a}; b{k + 1} = z{k} = {z}; y{k+1} = a{k+1} + b{k+1} - y{k} = {a+b-y0}; z{k+1} = y{k} = {y0}')
+            print(f'Таким образом, a{k + 1} = a{k} = {a}; b{k + 1} = z{k} = {z}; y{k+1} = a{k+1} + b{k+1} - y{k} = {a+b-y}; z{k+1} = y{k} = {y}')
             b = z
-            z = y0
-            fz = fy
+
             ind = True
         else:
             print('f(y{k}) > f(z{k})')
             print(f'Таким образом, a{k + 1} = y{k} = {y}; b{k + 1} = b{k} = {b}; y{k+1} = z{k} = {z}; z{k+1} = a{k+1} + b{k+1} - z{k} = {a+b-y}')
             a = y
-            y = z
-            fy = fz
+
             ind = False
         if ind == True:
+            z = y
+            fz = fy
             y = a + b - z
             fy = f(y)
         else:
+            y = z
+            fy = fz
             z = a + b - y
             fz = f(z)
         print(f'Промежуток:[{a},{b}]\n')
